@@ -5,9 +5,15 @@ import (
 	"fmt"
 	"os"
 	"strings"
-
-	. "github.com/wahlly/JSON-parser/utils"
+	"encoding/json"
 )
+
+func ValidateJson(data string) bool {
+	var js map[string] interface {}
+	//parse the json encoded data, and store in js
+	err := json.Unmarshal([]byte(data), &js)
+	return err == nil
+}
 
 func main() {
 	fmt.Println("Please enter the path to the file")
